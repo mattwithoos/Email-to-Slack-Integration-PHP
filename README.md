@@ -3,7 +3,7 @@ Email To Slack Integration
 
 Slack to Email detects new emails in an IMAP inbox (tested with Gmail for Business) every 15 seconds and sends a message to Slack with the subject, sender and 140 characters of the body. It also marks the email as read once done. **It is ideally used as a service to share an email or email chain into Slack.**
 
-There are four files. *check.php* authenticates into the IMAP provider, downloads a list of emails, iterates through the unread emails, and sends a message to a Slack channel using Slack's API (via *slack-send.php*). check.php should be run by a cronjob or similar every 15 seconds (or as frequently as you like). view.php provides an external link from Slack to your web server, and takes two parameters - the unique email ID as described by the IMAP server **(UID)** and a salted MD5 string of the unix timestamp. Finally, the config.php file needs to be filled out before running the script.
+There are four files. *check.php* authenticates into the IMAP provider, downloads a list of emails, iterates through the unread emails, and sends a message to a Slack channel using Slack's API (via *slack-send.php*). check.php should be run by a cronjob or similar every 15 seconds (or as frequently as you like). view.php provides an external link from Slack to your web server, and takes two parameters - the unique email ID as described by the IMAP server **(uid)** and a salted MD5 string of the unix timestamp **(secret)**. Finally, the *config.php* file needs to be filled out before running the script.
 
 Oh yeah, you'll need the imap module for PHP5. Plenty of guides on how to install it if you don't have it on your web server.
 
